@@ -1,3 +1,5 @@
+import lighter from "./img/lighter.png";
+
 let main = [];
 let indexTaskTarget = null;
 let indexCol = null;
@@ -194,6 +196,8 @@ const onDropContent = event => {
   }
 };
 
+window.onDropContent = onDropContent;
+
 const move = (arr, old_index, new_index) => {
   arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
   return arr;
@@ -273,6 +277,9 @@ const columnTitle = () => {
   button.style.display = "none";
 };
 
+window.columnTitle = columnTitle;
+
+
 const createColumn = (event, button, inputValue) => {
   event.preventDefault();
   if (button) {
@@ -317,7 +324,6 @@ const taskInput = () => {
     {
       className: "taskInput",
       name: "task",
-      type: "text",
       placeholder: "Enter your task...",
       onkeyup: event =>
         event.target.scrollTop > 0 ? (event.target.rows += 1) : null
@@ -349,6 +355,8 @@ const taskInput = () => {
 const remDelBtnOnClick = () => {
     document.querySelectorAll(".taskEditBtn").forEach(btn=>btn.style.display = 'none')
 }
+
+window.remDelBtnOnClick = remDelBtnOnClick
 
 const createTask = (e, button, inputValue) => {
   event.preventDefault();
@@ -463,7 +471,7 @@ const render = () => {
         lighterCont = newElement("div", { className: "lighterCont" }, ".main");
         lighterImg = newElement(
           "img",
-          { className: "lighterImg", src: "lighter.png" },
+          { className: "lighterImg", src: lighter },
           lighterCont
         );
         pxLeftToEl = newColumn.offsetLeft;
@@ -538,9 +546,7 @@ const render = () => {
             });
               newTask.insertBefore(form, newTask.firstChild);
               
-              const submitOnEnter = event => {
-                console.log(input.value);
-                
+              const submitOnEnter = event => { 
               if (event.which === 13 && !event.shiftKey) {
                   if (input.value) {
                       event.target.form.dispatchEvent(
@@ -556,7 +562,6 @@ const render = () => {
               {
                 className: "titleInput",
                 name: "title",
-                type: "text",
                 value: text,
                   onkeyup: event => event.target.scrollTop > 0 ? (event.target.rows += 1) : null,
                 onkeypress: () => submitOnEnter(event)

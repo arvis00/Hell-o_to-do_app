@@ -1,0 +1,26 @@
+{
+  "name": "drag_to_do_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf public build dist",
+    "prebuild": "npm run clean",
+    "build": "parcel build ./src/index.html --out-dir build --public-url ./ --no-source-maps",
+    "predev": "npm run clean",
+    "dev": "parcel ./src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arvis00/Hell-o_to-do_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arvis00/Hell-o_to-do_app/issues"
+  },
+  "homepage": "https://github.com/arvis00/Hell-o_to-do_app#readme",
+  "devDependencies": {
+    "parcel": "^1.12.3"
+  }
+}
