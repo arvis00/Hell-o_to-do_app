@@ -22,5 +22,9 @@
   "homepage": "https://github.com/arvis00/Hell-o_to-do_app#readme",
   "devDependencies": {
     "parcel": "^1.12.3"
+  },
+  "dependencies": {
+    "index": "^0.4.0",
+    "src": "^1.1.2"
   }
 }
