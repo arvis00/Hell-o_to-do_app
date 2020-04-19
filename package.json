@@ -9,7 +9,7 @@
     "build": "parcel build ./src/index.html --out-dir build --public-url='/nns' --no-source-maps",
     "predev": "npm run clean",
     "dev": "parcel ./src/index.html",
-    "predeploy": "rm -rf dist && parcel build ./src/index.html",
+    "predeploy": "rm -rf dist && parcel build ./src/index.html --out-dir dist --public-url ./",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
