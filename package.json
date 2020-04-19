@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/arvis00/Hell-o_to-do_app/issues"
   },
-  "homepage": "https://github.com/arvis00/Hell-o_to-do_app#readme",
+  "homepage": "https://github.com/arvis00/Hell-o_to-do_app",
   "devDependencies": {
     "parcel": "^1.12.3"
   },
