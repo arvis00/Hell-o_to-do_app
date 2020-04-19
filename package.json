@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf public build dist",
     "prebuild": "npm run clean",
-    "build": "parcel build ./src/index.html --out-dir build --public-url ./ --no-source-maps",
+    "build": "parcel build ./src/index.html --out-dir build --public-url='./' --no-source-maps",
     "predev": "npm run clean",
     "dev": "parcel ./src/index.html"
   },
