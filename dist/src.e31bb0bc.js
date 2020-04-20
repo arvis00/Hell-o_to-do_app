@@ -649,24 +649,28 @@ var render = function render() {
         deleteScreen.style.backgroundImage = "url(".concat(fire, ")"); // deleteScreen.style.backgroundImage = 'url(./img/fire.gif)'
 
         deleteHover.innerHTML = '<div class=deleteConf>Yes!</div>';
-        lighterCont = elementModule.newElement('div', {
-          className: 'lighterCont'
-        }, '.main');
-        lighterImg = elementModule.newElement('img', {
-          className: 'lighterImg',
-          src: lighter
-        }, lighterCont);
-        pxLeftToEl = newColumn.offsetLeft;
-        pxTopToEl = newColumn.offsetTop;
-        pxHeightOfEl = newColumn.offsetHeight;
-        var screenWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        screenHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        lighterImg.style.top = "".concat(screenHeight, "px");
-        lighterImg.style.left = "".concat(screenWidth / 2, "px");
-        pxLeftToLighter = lighterImg.offsetLeft;
-        setTimeout(function () {
-          lighterImg.style.transform = "translate(".concat(pxLeftToEl - pxLeftToLighter + 135, "px, ").concat(-(screenHeight - (pxTopToEl + pxHeightOfEl)) - 20, "px)");
-        }, 5);
+        var lighterContCheck = document.querySelector('.lighterCont');
+
+        if (!lighterContCheck) {
+          lighterCont = elementModule.newElement('div', {
+            className: 'lighterCont'
+          }, '.main');
+          lighterImg = elementModule.newElement('img', {
+            className: 'lighterImg',
+            src: lighter
+          }, lighterCont);
+          pxLeftToEl = newColumn.offsetLeft;
+          pxTopToEl = newColumn.offsetTop;
+          pxHeightOfEl = newColumn.offsetHeight;
+          var screenWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+          screenHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+          lighterImg.style.top = "".concat(screenHeight, "px");
+          lighterImg.style.left = "".concat(screenWidth / 2, "px");
+          pxLeftToLighter = lighterImg.offsetLeft;
+          setTimeout(function () {
+            lighterImg.style.transform = "translate(".concat(pxLeftToEl - pxLeftToLighter + 135, "px, ").concat(-(screenHeight - (pxTopToEl + pxHeightOfEl)) - 20, "px)");
+          }, 5);
+        }
       };
 
       var mouseLeaveHover = function mouseLeaveHover() {
@@ -675,6 +679,10 @@ var render = function render() {
         columnHead.appendChild(deleteHover);
         deleteHover.style.backgroundColor = '#ebecf0';
         deleteHover.innerHTML = '<div class=deleteSign></div>';
+        var main = document.querySelector('.main');
+        setTimeout(function () {
+          main.removeChild(lighterCont);
+        }, 300);
       };
 
       deleteHover.addEventListener('mouseenter', mouseEnterHover);
@@ -795,7 +803,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60996" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49742" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

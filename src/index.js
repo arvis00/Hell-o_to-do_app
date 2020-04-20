@@ -108,35 +108,38 @@ const render = () => {
         deleteScreen.style.backgroundImage = `url(${fire})`
         // deleteScreen.style.backgroundImage = 'url(./img/fire.gif)'
         deleteHover.innerHTML = '<div class=deleteConf>Yes!</div>'
-        lighterCont = elementModule.newElement(
-          'div',
-          { className: 'lighterCont' },
-          '.main'
-        )
-        lighterImg = elementModule.newElement(
-          'img',
-          { className: 'lighterImg', src: lighter },
-          lighterCont
-        )
-        pxLeftToEl = newColumn.offsetLeft
-        pxTopToEl = newColumn.offsetTop
-        pxHeightOfEl = newColumn.offsetHeight
-        const screenWidth = Math.max(
-          document.documentElement.clientWidth,
-          window.innerWidth || 0
-        )
-        screenHeight = Math.max(
-          document.documentElement.clientHeight,
-          window.innerHeight || 0
-        )
-        lighterImg.style.top = `${screenHeight}px`
-        lighterImg.style.left = `${screenWidth / 2}px`
-        pxLeftToLighter = lighterImg.offsetLeft
-        setTimeout(() => {
-          lighterImg.style.transform = `translate(${
-            pxLeftToEl - pxLeftToLighter + 135
-          }px, ${-(screenHeight - (pxTopToEl + pxHeightOfEl)) - 20}px)`
-        }, 5)
+        const lighterContCheck = document.querySelector('.lighterCont')
+        if (!lighterContCheck) {
+          lighterCont = elementModule.newElement(
+            'div',
+            { className: 'lighterCont' },
+            '.main'
+          )
+          lighterImg = elementModule.newElement(
+            'img',
+            { className: 'lighterImg', src: lighter },
+            lighterCont
+          )
+          pxLeftToEl = newColumn.offsetLeft
+          pxTopToEl = newColumn.offsetTop
+          pxHeightOfEl = newColumn.offsetHeight
+          const screenWidth = Math.max(
+            document.documentElement.clientWidth,
+            window.innerWidth || 0
+          )
+          screenHeight = Math.max(
+            document.documentElement.clientHeight,
+            window.innerHeight || 0
+          )
+          lighterImg.style.top = `${screenHeight}px`
+          lighterImg.style.left = `${screenWidth / 2}px`
+          pxLeftToLighter = lighterImg.offsetLeft
+          setTimeout(() => {
+            lighterImg.style.transform = `translate(${
+              pxLeftToEl - pxLeftToLighter + 135
+            }px, ${-(screenHeight - (pxTopToEl + pxHeightOfEl)) - 20}px)`
+          }, 5)
+        }
       }
 
       const mouseLeaveHover = () => {
@@ -149,6 +152,10 @@ const render = () => {
         columnHead.appendChild(deleteHover)
         deleteHover.style.backgroundColor = '#ebecf0'
         deleteHover.innerHTML = '<div class=deleteSign></div>'
+        const main = document.querySelector('.main')
+        setTimeout(() => {
+          main.removeChild(lighterCont)
+        }, 300)
       }
 
       deleteHover.addEventListener('mouseenter', mouseEnterHover)

@@ -350,7 +350,6 @@ button {
   position: absolute;
   top: 490px;
   right: 300px;
-
   transition: transform 0.3s ease-out;
 }
 
